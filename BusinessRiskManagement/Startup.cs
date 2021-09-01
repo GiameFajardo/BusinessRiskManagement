@@ -18,6 +18,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Infrastructure;
+using Core.Application;
+using Core.Application.Contracts.Data;
 
 namespace BusinessRiskManagement
 {
@@ -36,29 +39,33 @@ namespace BusinessRiskManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.RegisterApplicationServices(Configuration);
+            services.RegisterInfrastructerServices(Configuration);
+
             services.AddControllers();
             
             if (_env.IsStaging())
             {
-                services.AddDbContext<BRMContext>(option =>
+                services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
                     option.UseSqlServer(Configuration.GetConnectionString("StagingConnection")));
             }
             else if (_env.IsEnvironment("Quality&Assurance"))
             {
-                services.AddDbContext<BRMContext>(option =>
+                services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
                     option.UseSqlServer(Configuration.GetConnectionString("Quality&AssuranceConnection")));
             }
             else if (_env.IsDevelopment())
             {
-                services.AddDbContext<BRMContext>(option =>
+                services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
                     option.UseSqlServer(Configuration.GetConnectionString("DevelopmentConnection")));
             }
             else
             {
-                services.AddDbContext<BRMContext>(option =>
+                services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
                     option.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
             }
-
+            services.AddScoped<IBRMContext>(optiont => optiont.GetService<Infrastructure.Data.BRMContext>());
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

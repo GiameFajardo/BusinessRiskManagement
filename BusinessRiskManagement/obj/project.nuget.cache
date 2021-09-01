@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lvzeQ7Apw/kcTnrTaG4cghWV3iKx9gXETdJ8R1Z4yLUfwnc/zec1Jw8HSNsavUuB+NJZXmIhHXrTeGK22Wzsgg==",
+  "dgSpecHash": "ooZjNVK0757R1WBU8rkv99qW6KVdu3mhRv9dOO1HoWI9CCgJEFuadC05z4y1qeWoKyGiWZapzRgIEGheT9idcA==",
   "success": true,
   "projectFilePath": "C:\\Users\\gfajardo.CECOMSACORP\\source\\repos\\BusinessRiskManagement\\BusinessRiskManagement\\BusinessRiskManagement.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.7\\microsoft.entityframeworkcore.tools.5.0.7.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
+    "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.1\\microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
