@@ -1,4 +1,4 @@
-using BusinessRiskManagement.Model;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,6 +21,8 @@ using Microsoft.AspNetCore.Hosting;
 using Infrastructure;
 using Core.Application;
 using Core.Application.Contracts.Data;
+using Infrastructure.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace BusinessRiskManagement
 {
@@ -43,29 +45,37 @@ namespace BusinessRiskManagement
             services.RegisterInfrastructerServices(Configuration);
 
             services.AddControllers();
-            
+            #region Seting Env
             if (_env.IsStaging())
             {
                 services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(Configuration.GetConnectionString("StagingConnection")));
+                    option.UseSqlServer(Configuration.GetConnectionString("StagingConnection"),
+                assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
+
             }
             else if (_env.IsEnvironment("Quality&Assurance"))
             {
                 services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(Configuration.GetConnectionString("Quality&AssuranceConnection")));
+                    option.UseSqlServer(Configuration.GetConnectionString("Quality&AssuranceConnection"),
+                assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
             }
             else if (_env.IsDevelopment())
             {
                 services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(Configuration.GetConnectionString("DevelopmentConnection")));
+                    option.UseSqlServer(Configuration.GetConnectionString("ProductionConnection"),
+                assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
             }
             else
             {
                 services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
+                    option.UseSqlServer(Configuration.GetConnectionString("ProductionConnection"),
+                assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
             }
+            #endregion
             services.AddScoped<IBRMContext>(optiont => optiont.GetService<Infrastructure.Data.BRMContext>());
-            
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<BRMContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

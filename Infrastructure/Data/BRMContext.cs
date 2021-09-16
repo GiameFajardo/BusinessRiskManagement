@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Application.Contracts.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
 
-    public class BRMContext : DbContext, IBRMContext
+    public class BRMContext : IdentityDbContext, IBRMContext
     {
         public BRMContext(DbContextOptions<BRMContext> options) : base(options)
         {
@@ -21,6 +22,12 @@ namespace Infrastructure.Data
 
             modelBuilder.Entity<Individual>();
             modelBuilder.Entity<Company>();
+            modelBuilder.Entity<Company>().HasData(new Company()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Test Company",
+                Enabled = true
+            });
             base.OnModelCreating(modelBuilder);
 
         }

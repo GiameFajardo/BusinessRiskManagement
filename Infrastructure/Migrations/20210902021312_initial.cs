@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BusinessRiskManagement.Migrations
+namespace Infrastructure.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,11 @@ namespace BusinessRiskManagement.Migrations
                 {
                     table.PrimaryKey("PK_Organizacions", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Organizacions",
+                columns: new[] { "Id", "Discriminator", "Enabled", "Name" },
+                values: new object[] { new Guid("b01df836-bd85-4c89-9767-92b54b34c0e8"), "Company", true, "Test Company" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

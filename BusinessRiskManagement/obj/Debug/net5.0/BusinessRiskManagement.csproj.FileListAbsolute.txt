@@ -60,3 +60,8 @@ C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskMa
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\obj\Debug\net5.0\ref\BusinessRiskManagement.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\obj\Debug\net5.0\BusinessRiskManagement.pdb
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\obj\Debug\net5.0\BusinessRiskManagement.genruntimeconfig.cache
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
