@@ -15,3 +15,5 @@ C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Infrastructure
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Infrastructure\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Infrastructure\bin\Debug\net5.0\appsettings.json

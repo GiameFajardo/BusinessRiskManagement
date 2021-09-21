@@ -68,5 +68,4 @@ C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskMa
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\obj\Debug\net5.0\BusinessRiskManagement.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

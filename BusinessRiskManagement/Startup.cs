@@ -47,6 +47,10 @@ namespace BusinessRiskManagement
         public void ConfigureServices(IServiceCollection services)
         {
             
+            var jwtSettings = new JwtSettings();
+            Configuration.Bind(nameof(jwtSettings), jwtSettings);
+            services.AddSingleton(jwtSettings);
+
             services.RegisterApplicationServices(Configuration);
             services.RegisterInfrastructerServices(Configuration);
 
@@ -78,15 +82,13 @@ namespace BusinessRiskManagement
                 assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
             }
             #endregion
-            services.AddScoped<IBRMContext>(optiont => optiont.GetService<Infrastructure.Data.BRMContext>());
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<BRMContext>()
-                .AddDefaultTokenProviders();
+            //services.AddScoped<IBRMContext>(optiont => optiont.GetService<Infrastructure.Data.BRMContext>());
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<BRMContext>()
+            //    .AddDefaultTokenProviders();
 
-            var jwtSettings = new JwtSettings();
-            Configuration.Bind(nameof(jwtSettings), jwtSettings);
-            services.AddSingleton(jwtSettings);
-
+            services.AddTransient<UserManager<IdentityUser>>();
+            
 
             services.AddAuthentication(c =>
             {
