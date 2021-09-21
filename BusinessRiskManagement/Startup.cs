@@ -47,9 +47,7 @@ namespace BusinessRiskManagement
         public void ConfigureServices(IServiceCollection services)
         {
             
-            var jwtSettings = new JwtSettings();
-            Configuration.Bind(nameof(jwtSettings), jwtSettings);
-            services.AddSingleton(jwtSettings);
+            
 
             services.RegisterApplicationServices(Configuration);
             services.RegisterInfrastructerServices(Configuration);
@@ -82,32 +80,10 @@ namespace BusinessRiskManagement
                 assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
             }
             #endregion
-            //services.AddScoped<IBRMContext>(optiont => optiont.GetService<Infrastructure.Data.BRMContext>());
-            //services.AddIdentity<IdentityUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<BRMContext>()
-            //    .AddDefaultTokenProviders();
-
+           
             services.AddTransient<UserManager<IdentityUser>>();
             
 
-            services.AddAuthentication(c =>
-            {
-                c.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                c.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                c.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(c =>
-            {
-                c.SaveToken = true;
-                c.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
-                    ValidateAudience= false,
-                    ValidateIssuer = false,
-                    ValidateLifetime = true,
-                    RequireExpirationTime = false
-                };
-            });
 
             services.AddSwaggerGen(c =>
             {

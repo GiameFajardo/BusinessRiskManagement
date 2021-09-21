@@ -1506,6 +1506,7 @@
       "Core.Application/1.0.0": {
         "dependencies": {
           "Core.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.10",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.7",
           "Microsoft.Extensions.Configuration": "5.0.0",
