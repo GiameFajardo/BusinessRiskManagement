@@ -10,6 +10,7 @@ namespace Core.Application.Contracts.Services
     public interface IIdentityService
     {
 
-        Task<AuthenticationResult> Register(string email, string password);
+        Task<AuthenticationResult> RegisterAsync(string email, string password);
+        Task<AuthenticationResult> LoginAsync(string email, string password);
     }
 }

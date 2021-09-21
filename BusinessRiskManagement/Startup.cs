@@ -51,7 +51,17 @@ namespace BusinessRiskManagement
 
             services.RegisterApplicationServices(Configuration);
             services.RegisterInfrastructerServices(Configuration);
-
+            services.AddCors(options =>
+                            {
+                                options.AddPolicy("AllowAll", builder =>
+                                {
+                                    builder
+                                     .AllowAnyOrigin()
+                                    .AllowAnyMethod()
+                                    .AllowAnyHeader();
+                                    //.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyMethod();
+                                });
+                            });
             services.AddControllers();
             #region Seting Env
             if (_env.IsStaging())
@@ -82,8 +92,8 @@ namespace BusinessRiskManagement
             #endregion
            
             services.AddTransient<UserManager<IdentityUser>>();
-            
 
+            
 
             services.AddSwaggerGen(c =>
             {
@@ -131,6 +141,7 @@ namespace BusinessRiskManagement
 
             app.UseAuthorization();
 
+            app.UseCors("AllowAll");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
