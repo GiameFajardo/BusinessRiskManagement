@@ -1,5 +1,6 @@
 ﻿using Core.Application.Contracts.Data;
 using Core.Application.Contracts.Services;
+using Core.Application.Options;
 using Core.Domain.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -15,16 +16,19 @@ namespace Core.Application.Services
 {
     public class IdentityService : IIdentityService
     {
+        private readonly IBRMContext brmContext;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly JwtSettings _jwtSettings;
 
         //public JwtSettings _JwtSettings { get; }
         public IdentityService(IBRMContext brmContext,
-            UserManager<IdentityUser> userManager
-            //, JwtSettings jwtSettings
+                               UserManager<IdentityUser> userManager, 
+                               JwtSettings jwtSettings
             )
         {
+            this.brmContext = brmContext;
             this._userManager = userManager;
-            //_JwtSettings = jwtSettings;
+            this._jwtSettings = jwtSettings;
         }
 
 
@@ -49,7 +53,7 @@ namespace Core.Application.Services
             }
 
             var tokenHandeler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("asdasdwefr");// Encoding.ASCII.GetBytes(_JwtSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] {
