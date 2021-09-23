@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Domain.Model
+namespace Core.Application.DTO
 {
-    public class AuthenticationResult2
+    public class AuthenticationResult
     {
         public string Token { get; set; }
         public bool Sussess { get; set; }
         public IEnumerable<string> Errors { get; set; }
+        public UserDTO User { get; set; }
     }
 }

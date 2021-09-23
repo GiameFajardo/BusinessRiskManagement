@@ -1,5 +1,6 @@
 ﻿using Core.Application.Contracts.Data;
 using Core.Application.Contracts.Services;
+using Core.Application.DTO;
 using Core.Application.Options;
 using Core.Domain.Model;
 using Microsoft.AspNetCore.Identity;
@@ -51,6 +52,27 @@ namespace Core.Application.Services
             }
             return GenerateAuthenticationResult(user);
         }
+        public async Task<AuthenticationResult> RegisterAsync(string email, string name, string password)
+        {
+            var existingUser = await _userManager.FindByEmailAsync(email);
+
+            if (existingUser != null)
+            {
+                return new AuthenticationResult
+                {
+                    Sussess = false,
+                    Errors = new[] { "User with email address already exists." }
+                };
+            }
+            var user = new IdentityUser { UserName = name, Email = email };
+            var createdUser = await _userManager.CreateAsync(user, password);
+
+            if (!createdUser.Succeeded)
+            {
+                return new AuthenticationResult { Sussess = false, Errors = createdUser.Errors.Select(e => e.Description) };
+            }
+            return GenerateAuthenticationResult(user);
+        }
 
         public async Task<AuthenticationResult> LoginAsync(string email, string password)
         {
@@ -67,10 +89,18 @@ namespace Core.Application.Services
             var userHasValidPass = await _userManager.CheckPasswordAsync(existingUser, password);
             if (!userHasValidPass)
             {
+                var user = new UserDTO
+                {
+                    Email = existingUser.Email,
+                    NormalizedEmail = existingUser.NormalizedEmail,
+                    NormalizedUserName = existingUser.NormalizedUserName,
+                    UserName = existingUser.UserName
+                };
                 return new AuthenticationResult
                 {
                     Sussess = false,
-                    Errors = new[] { "User or Pasword incorrect." }
+                    Errors = new[] { "User or Pasword incorrect." },
+                    User = user
                 };
             }
             return GenerateAuthenticationResult(existingUser);
@@ -92,10 +122,18 @@ namespace Core.Application.Services
             };
             var token = tokenHandeler.CreateToken(tokenDescriptor);
 
+            var userResponse = new UserDTO
+            {
+                Email = user.Email,
+                NormalizedEmail = user.NormalizedEmail,
+                NormalizedUserName = user.NormalizedUserName,
+                UserName = user.UserName
+            };
             return new AuthenticationResult
             {
                 Sussess = true,
-                Token = tokenHandeler.WriteToken(token)
+                Token = tokenHandeler.WriteToken(token),
+                User = userResponse
             };
         }
 

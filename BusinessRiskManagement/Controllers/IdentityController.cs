@@ -32,7 +32,7 @@ namespace BusinessRiskManagement.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] UserRegistrationRequest request)
         {
-            var authResult = await _identityService.RegisterAsync(request.Email, request.Password);
+            var authResult = await _identityService.RegisterAsync(request.Email, request.Name, request.Password);
             if (!authResult.Sussess)
             {
                 return BadRequest(new AuthorizationFailedResponse
@@ -59,7 +59,8 @@ namespace BusinessRiskManagement.Controllers
             }
             return Ok(new AuthorizationSussessResponse
             {
-                Token = authResult.Token
+                Token = authResult.Token,
+                User = authResult.User
             });
         }
     }
