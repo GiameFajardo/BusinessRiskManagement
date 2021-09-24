@@ -25,7 +25,7 @@ namespace Infrastructure.Services
             //return _brmContext.Organizacions.Select(o => new OrganizacionDTO { Id = o.Id, Enabled = o.Enabled }).;
         }
 
-        public async Task Create(OrganizacionDTO org)
+        public async Task Create(CompanyDTO org)
         {
             var organization = new Company
             {

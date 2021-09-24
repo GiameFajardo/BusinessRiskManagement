@@ -10,6 +10,5 @@ namespace Core.Application.DTO
     {
 
         public bool Enabled { get; set; }
-        public string Name { get; set; }
     }
 }

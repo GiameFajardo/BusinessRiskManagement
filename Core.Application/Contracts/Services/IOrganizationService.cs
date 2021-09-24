@@ -10,6 +10,6 @@ namespace Core.Application.Contracts.Services
     public interface IOrganizationService
     {
         List<OrganizacionDTO> GetAll();
-        Task Create(OrganizacionDTO org);
+        Task Create(CompanyDTO org);
     }
 }

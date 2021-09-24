@@ -43,7 +43,8 @@ namespace BusinessRiskManagement.Controllers
         //}
 
         //// POST api/<OrganizationsController>
-        [HttpPost]
+
+        [HttpPost("create")]
         public ActionResult Post([FromBody] CreateOrganizationRequest orcanization)
         {
             var organization = new CompanyDTO
