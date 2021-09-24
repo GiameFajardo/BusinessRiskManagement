@@ -70,3 +70,7 @@ C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskMa
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\obj\Debug\net5.0\BusinessRiskManagement.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

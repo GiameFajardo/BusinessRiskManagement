@@ -28,6 +28,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 
 namespace BusinessRiskManagement
 {
@@ -46,11 +47,13 @@ namespace BusinessRiskManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
-            
 
+            services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddControllers().AddNewtonsoftJson(x =>
+                x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.RegisterApplicationServices(Configuration);
-            services.RegisterInfrastructerServices(Configuration);
+            services.RegisterInfrastructerServices(Configuration,_env);
             services.AddCors(options =>
                             {
                                 options.AddPolicy("AllowAll", builder =>
@@ -63,33 +66,7 @@ namespace BusinessRiskManagement
                                 });
                             });
             services.AddControllers();
-            #region Seting Env
-            if (_env.IsStaging())
-            {
-                services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(Configuration.GetConnectionString("StagingConnection"),
-                assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
-
-            }
-            else if (_env.IsEnvironment("Quality&Assurance"))
-            {
-                services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(Configuration.GetConnectionString("Quality&AssuranceConnection"),
-                assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
-            }
-            else if (_env.IsDevelopment())
-            {
-                services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(Configuration.GetConnectionString("ProductionConnection"),
-                assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
-            }
-            else
-            {
-                services.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(Configuration.GetConnectionString("ProductionConnection"),
-                assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
-            }
-            #endregion
+           
            
             services.AddTransient<UserManager<IdentityUser>>();
 

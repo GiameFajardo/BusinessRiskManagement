@@ -1,7 +1,6 @@
 ﻿using BusinessRiskManagement.Requests;
 using BusinessRiskManagement.Responses;
 using Core.Application.Contracts.Services;
-//using Microsoft.AspNetCore.Identity.EntityFramework;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Application.Data.Services
+namespace Core.Application.Contracts.Services
 {
     public interface IOrganizationService
     {
         List<OrganizacionDTO> GetAll();
+        Task Create(OrganizacionDTO org);
     }
 }

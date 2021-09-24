@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NPkcsNi9//N+EqUBcLRlNXb0yYQUYBW3aFRPFLXEzlX20J5lkLklAFKyDz0MkLc+nP2ZMvCGTpSfWlf8eGVJ0Q==",
+  "dgSpecHash": "zw3y6DvW6LdLRWETnV9iQ2UIJoOF1D7grNRfI2DGQLBl48y3FtXwoN9Q1EZ5K7dwAsZfmcfVYtBJoD5/VotVlQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gfajardo.CECOMSACORP\\source\\repos\\BusinessRiskManagement\\BusinessRiskManagement\\BusinessRiskManagement.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,8 @@
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.2.0\\microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.7\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.7.nupkg.sha512",
+    "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.7\\microsoft.aspnetcore.jsonpatch.5.0.7.nupkg.sha512",
+    "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.7\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.7.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
@@ -62,6 +64,8 @@
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.1\\swashbuckle.aspnetcore.swagger.6.2.1.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.1\\swashbuckle.aspnetcore.swaggergen.6.2.1.nupkg.sha512",

@@ -1,4 +1,4 @@
-﻿using Core.Application.Data.Services;
+﻿
 using Core.Application.DTO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Core.Application.Contracts.Services;
+using BusinessRiskManagement.Requests;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,7 +32,7 @@ namespace BusinessRiskManagement.Controllers
         [HttpGet]
         public ActionResult<OrganizacionDTO> Get()
         {
-            return Ok( _organizationService.GetAll());
+            return Ok(_organizationService.GetAll());
         }
 
         //// GET api/<OrganizationsController>/5
@@ -40,10 +43,17 @@ namespace BusinessRiskManagement.Controllers
         //}
 
         //// POST api/<OrganizationsController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        [HttpPost]
+        public ActionResult Post([FromBody] CreateOrganizationRequest orcanization)
+        {
+            var organization = new CompanyDTO
+            {
+                Enabled = orcanization.Enabled,
+                Name = orcanization.Name
+            };
+            _organizationService.Create(organization);
+            return Ok();
+        }
 
         //// PUT api/<OrganizationsController>/5
         //[HttpPut("{id}")]

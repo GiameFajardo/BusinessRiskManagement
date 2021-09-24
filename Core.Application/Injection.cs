@@ -1,7 +1,5 @@
 ﻿using Core.Application.Contracts.Services;
-using Core.Application.Data.Services;
 using Core.Application.Options;
-using Core.Application.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,9 +21,6 @@ namespace Core.Application
             var jwtSettings = new JwtSettings();
             configuration.Bind(nameof(jwtSettings), jwtSettings);
             service.AddSingleton(jwtSettings);
-
-            service.AddScoped<IIdentityService, IdentityService>();
-            service.AddScoped<IOrganizationService, OrganizationService >();
 
             service.AddAuthentication(c =>
             {

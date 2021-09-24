@@ -3,6 +3,7 @@ using Core.Application.Contracts.Services;
 using Core.Application.DTO;
 using Core.Application.Options;
 using Core.Domain.Model;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -13,21 +14,26 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Application.Services
+namespace Infrastructure.Services
 {
     public class IdentityService : IIdentityService
     {
-        private readonly IBRMContext brmContext;
+        private readonly IBRMContext _brmContext;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly JwtSettings _jwtSettings;
+        private readonly IOrganizationService _organizationService;
 
         //public JwtSettings _JwtSettings { get; }
         public IdentityService(UserManager<IdentityUser> userManager,
-                               JwtSettings jwtSettings
+                               JwtSettings jwtSettings,
+                               IOrganizationService organizationService,
+                               IBRMContext brmContext
             )
         {
+            this._brmContext = brmContext;
             this._userManager = userManager;
             this._jwtSettings = jwtSettings;
+            this._organizationService = organizationService;
         }
 
 
@@ -50,6 +56,7 @@ namespace Core.Application.Services
             {
                 return new AuthenticationResult { Sussess = false, Errors = createdUser.Errors.Select(e => e.Description) };
             }
+
             return GenerateAuthenticationResult(user);
         }
         public async Task<AuthenticationResult> RegisterAsync(string email, string name, string password)
@@ -129,6 +136,13 @@ namespace Core.Application.Services
                 NormalizedUserName = user.NormalizedUserName,
                 UserName = user.UserName
             };
+            var org = new CompanyDTO
+            {
+                Id = Guid.NewGuid(),
+                Enabled = false
+            };
+            _organizationService.Create(org);
+            
             return new AuthenticationResult
             {
                 Sussess = true,
