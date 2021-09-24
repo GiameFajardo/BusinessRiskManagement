@@ -32,6 +32,14 @@ namespace BusinessRiskManagement.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] UserRegistrationRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors.Select(e=>e.ErrorMessage));
+                return BadRequest(new AuthorizationFailedResponse
+                {
+                    Errors = errors
+                });
+            }
             var authResult = await _identityService.RegisterAsync(request.Email, request.Name, request.Password);
             if (!authResult.Sussess)
             {
