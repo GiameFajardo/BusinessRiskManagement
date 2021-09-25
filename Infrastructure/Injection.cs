@@ -1,5 +1,6 @@
 ﻿using Core.Application.Contracts.Data;
 using Core.Application.Contracts.Services;
+using Core.Domain.Model;
 using Infrastructure.Data;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Hosting;
@@ -54,11 +55,13 @@ namespace Infrastructure
             service.AddScoped<IIdentityService, IdentityService>();
             service.AddScoped<IOrganizationService, OrganizationService>();
 
-            service.AddScoped<IBRMContext>(optiont => optiont.GetService<Infrastructure.Data.BRMContext>());
-            service.AddIdentity<IdentityUser, IdentityRole>()
+            service.AddScoped<IBRMContext>(optiont => optiont.GetService<BRMContext>());
+            service.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<BRMContext>()
                 .AddDefaultTokenProviders();
-
+            //service.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            service.AddTransient<UserManager<ApplicationUser>>();
             return service;
         }
     }

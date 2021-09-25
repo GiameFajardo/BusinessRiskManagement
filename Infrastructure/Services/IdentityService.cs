@@ -19,12 +19,12 @@ namespace Infrastructure.Services
     public class IdentityService : IIdentityService
     {
         private readonly IBRMContext _brmContext;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly JwtSettings _jwtSettings;
         private readonly IOrganizationService _organizationService;
 
         //public JwtSettings _JwtSettings { get; }
-        public IdentityService(UserManager<IdentityUser> userManager,
+        public IdentityService(UserManager<ApplicationUser> userManager,
                                JwtSettings jwtSettings,
                                IOrganizationService organizationService,
                                IBRMContext brmContext
@@ -49,7 +49,7 @@ namespace Infrastructure.Services
                     Errors = new[] { "User with email address already exists." }
                 };
             }
-            var user = new IdentityUser { UserName = email, Email = email };
+            var user = new ApplicationUser { UserName = email, Email = email };
             var createdUser = await _userManager.CreateAsync(user, password);
 
             if (!createdUser.Succeeded)
@@ -71,7 +71,7 @@ namespace Infrastructure.Services
                     Errors = new[] { "User with email address already exists." }
                 };
             }
-            var user = new IdentityUser { UserName = name, Email = email };
+            var user = new ApplicationUser { UserName = name, Email = email };
             var createdUser = await _userManager.CreateAsync(user, password);
 
             if (!createdUser.Succeeded)
@@ -112,7 +112,7 @@ namespace Infrastructure.Services
             }
             return GenerateAuthenticationResult(existingUser);
         }
-        private AuthenticationResult GenerateAuthenticationResult(IdentityUser user)
+        private AuthenticationResult GenerateAuthenticationResult(ApplicationUser user)
         {
             var tokenHandeler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);

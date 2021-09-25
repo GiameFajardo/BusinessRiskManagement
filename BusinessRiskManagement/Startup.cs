@@ -68,7 +68,6 @@ namespace BusinessRiskManagement
             services.AddControllers();
            
            
-            services.AddTransient<UserManager<IdentityUser>>();
 
             
 

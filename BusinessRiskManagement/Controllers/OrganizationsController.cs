@@ -21,7 +21,6 @@ namespace BusinessRiskManagement.Controllers
     {
         private readonly IOrganizationService _organizationService;
 
-        public readonly UserManager<IdentityUser> _userManager;
         public OrganizationsController(IOrganizationService organizationService)
         {
             _organizationService = organizationService;

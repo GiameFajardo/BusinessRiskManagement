@@ -17,9 +17,6 @@ namespace BusinessRiskManagement.Controllers
     public class IdentityController : ControllerBase
     {
         private readonly IIdentityService _identityService;
-        public readonly UserManager<IdentityUser> _userManager;
-
-        public readonly SignInManager<IdentityUser> _signInManager;
 
         public IdentityController(IIdentityService identityService
             )

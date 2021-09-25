@@ -12,5 +12,6 @@ namespace Core.Application.Contracts.Data
     {
 
         public DbSet<Organizacion> Organizacions { get; }
+        public DbSet<ApplicationUser> Users { get; }
     }
 }

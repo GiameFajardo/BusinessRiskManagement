@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace Infrastructure.Data
 {
 
-    public class BRMContext : IdentityDbContext, IBRMContext
+    public class BRMContext : IdentityDbContext<ApplicationUser>, IBRMContext
     {
         public BRMContext(DbContextOptions<BRMContext> options) : base(options)
         {
@@ -19,7 +19,7 @@ namespace Infrastructure.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Individual>();
             modelBuilder.Entity<Company>();
             modelBuilder.Entity<Company>().HasData(new Company()
@@ -32,5 +32,7 @@ namespace Infrastructure.Data
 
         }
         public DbSet<Organizacion> Organizacions { get; set; }
+
+        public DbSet<ApplicationUser> Users { get; }
     }
 }

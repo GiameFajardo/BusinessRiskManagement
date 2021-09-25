@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hU5ogJa0Y3BT3gudLfUEOwJje8VpQyDLQVX5E5Oc5hxef2Ea0yfch7KOsKXK9ZMzlk1cm2WpcMg/kAKbir57Pg==",
+  "dgSpecHash": "DZuqfQi4nOqLHTHqmU38V+k6q4TgYLxlStEMIk553UKnUAB4BJX/DHfMpQHqSxDHE9F/ECtbD4J82eeoKfn28A==",
   "success": true,
   "projectFilePath": "C:\\Users\\gfajardo.CECOMSACORP\\source\\repos\\BusinessRiskManagement\\Core.Application\\Core.Application.csproj",
   "expectedPackageFiles": [
@@ -20,11 +20,13 @@
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.2.0\\microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
+    "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.7\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.7.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.7\\microsoft.entityframeworkcore.5.0.7.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.7\\microsoft.entityframeworkcore.abstractions.5.0.7.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.7\\microsoft.entityframeworkcore.analyzers.5.0.7.nupkg.sha512",
+    "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.7\\microsoft.entityframeworkcore.relational.5.0.7.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\gfajardo.CECOMSACORP\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",

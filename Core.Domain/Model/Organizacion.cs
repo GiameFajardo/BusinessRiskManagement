@@ -10,5 +10,6 @@ namespace Core.Domain.Model
     {
 
         public bool Enabled { get; set; }
+        public virtual IEnumerable<ApplicationUser> Users { get; set; }
     }
 }
