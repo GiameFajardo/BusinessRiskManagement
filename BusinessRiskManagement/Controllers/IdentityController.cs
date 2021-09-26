@@ -52,7 +52,7 @@ namespace BusinessRiskManagement.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> Login([FromBody] UserRegistrationRequest request)
+        public async Task<ActionResult> Login([FromBody] UserLoginRequest request)
         {
             var authResult = await _identityService.LoginAsync(request.Email, request.Password);
             if (!authResult.Sussess)
