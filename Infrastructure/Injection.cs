@@ -2,6 +2,7 @@
 using Core.Application.Contracts.Services;
 using Core.Domain.Model;
 using Infrastructure.Data;
+using Infrastructure.DTO;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -25,6 +26,17 @@ namespace Infrastructure
            IWebHostEnvironment env)
 
         {
+            service.AddSingleton<ICloudStorage, AzureStorage>();
+            service.AddSingleton<IStorageConnectionFactory, StorageConnectionFactory>(serviceProvider =>
+            {
+                CloudStorageOptionsDTO storageOptions = new CloudStorageOptionsDTO
+                {
+                    ConnectionString = configuration["AzureBMRBlobStorage:ConnectionString"],
+                    OrganizationPhotoContainer = configuration["AzureBMRBlobStorage:OrganizationPhotoContainer"]
+                };
+                return new StorageConnectionFactory(storageOptions);
+            });
+
             #region Seting Env
             if (env.IsStaging())
             {
