@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Core.Application.Contracts.Services;
 using BusinessRiskManagement.Requests;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,6 +18,7 @@ namespace BusinessRiskManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrganizationsController : ControllerBase
     {
         private readonly IOrganizationService _organizationService;
