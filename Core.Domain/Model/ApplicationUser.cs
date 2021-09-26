@@ -10,6 +10,7 @@ namespace Core.Domain.Model
 {
     public class ApplicationUser: IdentityUser
     {
+        
         public Guid? OrganizationId { get; set; }
         public virtual Organizacion Organizacion { get; set; }
     }

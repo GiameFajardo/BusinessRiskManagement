@@ -9,7 +9,8 @@ namespace Core.Application.Contracts.Services
 {
     public interface IOrganizationService
     {
-        List<OrganizacionDTO> GetAll();
-        Task Create(CompanyDTO org);
+        List<CompanyDTO> GetAll();
+        Task<Guid> Create(CompanyDTO org);
+        Task<Guid> CreateAndAsign(CompanyDTO org, Guid userId);
     }
 }

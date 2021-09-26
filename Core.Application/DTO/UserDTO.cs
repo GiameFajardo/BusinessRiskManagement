@@ -10,16 +10,17 @@ namespace Core.Application.DTO
     {
         //public  DateTimeOffset? LockoutEnd { get; set; }
         //public  bool TwoFactorEnabled { get; set; }
-      
+
         //public virtual bool PhoneNumberConfirmed { get; set; }
-        
+
         //public virtual string ConcurrencyStamp { get; set; }
-      
+
         //public virtual string SecurityStamp { get; set; }
-       
+
         //public virtual string PasswordHash { get; set; }
-       
+
         //public virtual bool EmailConfirmed { get; set; }
+        public string Id { get; set; }
         public virtual string NormalizedEmail { get; set; }
        
         public virtual string Email { get; set; }

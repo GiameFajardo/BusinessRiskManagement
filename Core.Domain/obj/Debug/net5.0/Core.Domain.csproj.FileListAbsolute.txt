@@ -9,3 +9,4 @@ C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Core.Domain\ob
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Core.Domain\obj\Debug\net5.0\Core.Domain.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Core.Domain\obj\Debug\net5.0\ref\Core.Domain.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Core.Domain\obj\Debug\net5.0\Core.Domain.pdb
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Core.Domain\obj\Debug\net5.0\Core.Domain.csproj.AssemblyReference.cache

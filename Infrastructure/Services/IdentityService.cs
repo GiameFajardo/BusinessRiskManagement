@@ -134,14 +134,9 @@ namespace Infrastructure.Services
                 Email = user.Email,
                 NormalizedEmail = user.NormalizedEmail,
                 NormalizedUserName = user.NormalizedUserName,
-                UserName = user.UserName
+                UserName = user.UserName,
+                Id = user.Id
             };
-            var org = new CompanyDTO
-            {
-                Id = Guid.NewGuid(),
-                Enabled = false
-            };
-            _organizationService.Create(org);
             
             return new AuthenticationResult
             {

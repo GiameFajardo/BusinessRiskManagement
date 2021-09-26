@@ -26,45 +26,25 @@ namespace BusinessRiskManagement.Controllers
             _organizationService = organizationService;
         }
 
-
-        // GET: api/<OrganizationsController>
         [HttpGet]
         public ActionResult<OrganizacionDTO> Get()
         {
             return Ok(_organizationService.GetAll());
         }
-
-        //// GET api/<OrganizationsController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        //// POST api/<OrganizationsController>
-
         [HttpPost("create")]
-        public ActionResult Post([FromBody] CreateOrganizationRequest orcanization)
+        public async Task<ActionResult> Create([FromBody] CreateOrganizationRequest request)
         {
+            //var userId = HttpContext.User.Claims
+            //    .SingleOrDefault(c => c.Type == "Id").Value;
+            var userId = HttpContext.User.Claims.SingleOrDefault(c => c.Type == "Id");
             var organization = new CompanyDTO
             {
-                Enabled = orcanization.Enabled,
-                Name = orcanization.Name
+                Enabled = request.Enabled,
+                Name = request.Name
             };
-            _organizationService.Create(organization);
+            await _organizationService.CreateAndAsign(organization, request.UserId);
             return Ok();
         }
 
-        //// PUT api/<OrganizationsController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<OrganizationsController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

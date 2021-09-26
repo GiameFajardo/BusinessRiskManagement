@@ -46,7 +46,8 @@ namespace BusinessRiskManagement.Controllers
             }
             return Ok(new AuthorizationSussessResponse
             {
-                Token = authResult.Token
+                Token = authResult.Token,
+                User = authResult.User
             });
         }
 
