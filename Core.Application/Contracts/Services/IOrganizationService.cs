@@ -12,5 +12,7 @@ namespace Core.Application.Contracts.Services
         List<CompanyDTO> GetAll();
         Task<Guid> Create(CompanyDTO org);
         Task<Guid> CreateAndAsign(CompanyDTO org, Guid userId);
+        Task<CompanyDTO> GetByUserAsync(string userId);
+        Task<bool> Update(CompanyDTO organization);
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Core.Application.DTO
+namespace BusinessRiskManagement.Requests
 {
-    public class CompanyDTO: OrganizacionDTO
+    public class UpdateOrganizationRequest
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -15,4 +15,3 @@ namespace Core.Application.DTO
         public string Phone { get; set; }
     }
 }
-

@@ -22,6 +22,7 @@ namespace Infrastructure.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Individual>();
             modelBuilder.Entity<Company>();
+            modelBuilder.Entity<ApplicationUser>();
             modelBuilder.Entity<Company>().HasData(new Company()
             {
                 Id = Guid.NewGuid(),
@@ -32,7 +33,6 @@ namespace Infrastructure.Data
 
         }
         public DbSet<Organizacion> Organizacions { get; set; }
-
         public DbSet<Company> Companies { get; set; }
         public DbSet<ApplicationUser> Users { get; }
     }
