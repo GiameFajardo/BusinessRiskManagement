@@ -61,8 +61,9 @@ namespace BusinessRiskManagement.Controllers
             return Ok();
         }
         [HttpPut("update")]
-        public async Task<ActionResult> UpdateCompany(UpdateOrganizationRequest request)
+        public async Task<ActionResult> UpdateCompany([FromForm] UpdateOrganizationRequest request)
         {
+
             var organization = new CompanyDTO
             {
                 Name = request.Name,
