@@ -26,16 +26,7 @@ namespace Infrastructure
            IWebHostEnvironment env)
 
         {
-            service.AddSingleton<ICloudStorage, AzureStorage>();
-            service.AddSingleton<IStorageConnectionFactory, StorageConnectionFactory>(serviceProvider =>
-            {
-                CloudStorageOptionsDTO storageOptions = new CloudStorageOptionsDTO
-                {
-                    ConnectionString = configuration["AzureBMRBlobStorage:ConnectionString"],
-                    OrganizationPhotoContainer = configuration["AzureBMRBlobStorage:OrganizationPhotoContainer"]
-                };
-                return new StorageConnectionFactory(storageOptions);
-            });
+           
 
             #region Seting Env
             if (env.IsStaging())
@@ -64,8 +55,20 @@ namespace Infrastructure
                 assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
             }
             #endregion
+
+            service.AddSingleton<ICloudStorage, AzureStorage>();
+            service.AddSingleton<IStorageConnectionFactory, StorageConnectionFactory>(serviceProvider =>
+            {
+                CloudStorageOptionsDTO storageOptions = new CloudStorageOptionsDTO
+                {
+                    ConnectionString = configuration["AzureBMRBlobStorage:ConnectionString"],
+                    OrganizationPhotoContainer = configuration["AzureBMRBlobStorage:OrganizationPhotoContainer"]
+                };
+                return new StorageConnectionFactory(storageOptions);
+            });
             service.AddScoped<IIdentityService, IdentityService>();
             service.AddScoped<IOrganizationService, OrganizationService>();
+            service.AddScoped<IStorageService, StorageService>();
 
             service.AddScoped<IBRMContext>(optiont => optiont.GetService<BRMContext>());
             service.AddIdentity<ApplicationUser, IdentityRole>()

@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Core.Application.DTO
+namespace BusinessRiskManagement.Responses
 {
-    public class CompanyDTO: OrganizacionDTO
+    public class OrganizationResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -14,8 +13,6 @@ namespace Core.Application.DTO
         public string Address { get; set; }
         public string EMail { get; set; }
         public string Phone { get; set; }
-        public IFormFile Photo { get; set; }
-        public string PhotoURL { get; set; }
+        public string Photo { get; set; }
     }
 }
-

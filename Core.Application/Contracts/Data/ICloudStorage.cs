@@ -17,6 +17,7 @@ namespace Core.Application.Contracts.Data
         Task<string> UploadAsync(IFormFile file);
         Task<string> UploadAsync(MemoryStream stream, string fileName);
         Task DeleteImageAsync(string name);
+        // Si se requiere desacoplar Azure de esta implementacion este metodo hay que cambiarlo
         Task<CloudBlob> FindBlob(string fileName);
     }
 }

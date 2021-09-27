@@ -10,6 +10,7 @@ using Core.Application.Contracts.Services;
 using BusinessRiskManagement.Requests;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Core.Domain.Model;
+using BusinessRiskManagement.Responses;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -35,11 +36,21 @@ namespace BusinessRiskManagement.Controllers
             return Ok(_organizationService.GetAll());
         }
         [HttpGet("byUser")]
-        public async Task<ActionResult<OrganizacionDTO>> GetByUser()
+        public async Task<ActionResult<OrganizationResponse>> GetByUser()
         {
             var userId = HttpContext.User.Claims.SingleOrDefault(c => c.Type == "id").Value;
-            OrganizacionDTO organization = await _organizationService.GetByUserAsync(userId);
-            return Ok(organization);
+            CompanyDTO organization = await _organizationService.GetByUserAsync(userId);
+            var response = new OrganizationResponse
+            {
+                About = organization.About,
+                Address = organization.Address,
+                EMail = organization.EMail,
+                Id = organization.Id,
+                Name = organization.Name,
+                Phone = organization.Phone,
+                Photo = organization.PhotoURL
+            };
+            return Ok(response);
         }
         [HttpPost("create")]
         public async Task<ActionResult> Create([FromBody] CreateOrganizationRequest request)
@@ -71,7 +82,8 @@ namespace BusinessRiskManagement.Controllers
                 Phone = request.Phone,
                 EMail = request.EMail,
                 Address = request.Address,
-                Id = request.Id
+                Id = request.Id,
+                Photo = request.Photo
             };
             bool updated = await _organizationService.Update(organization);
             return Created(organization.Id.ToString(), organization);

@@ -18,11 +18,17 @@ namespace Infrastructure.Services
         private readonly BRMContext _brmContext;
 
         public readonly UserManager<ApplicationUser> _userManager;
+        private readonly IStorageService _storageService;
 
-        public OrganizationService(BRMContext brmContext, UserManager<ApplicationUser> userManager)
+        public OrganizationService(
+            BRMContext brmContext, 
+            UserManager<ApplicationUser> userManager,
+            IStorageService storageService)
         {
             _brmContext = brmContext;
             _userManager = userManager;
+
+            this._storageService = storageService;
         }
         public List<CompanyDTO> GetAll()
         {
@@ -79,7 +85,8 @@ namespace Infrastructure.Services
                 About = company.About,
                 Phone = company.Phone,
                 EMail = company.EMail,
-                Address = company.Address
+                Address = company.Address,
+                PhotoURL = company.Photo
             };
             return organizationDTO;
         }
@@ -89,14 +96,17 @@ namespace Infrastructure.Services
 
             var organizationToUpdate = await _brmContext.Companies.FindAsync(organization.Id);
 
-
+            if (organization.Photo != null && organization.Photo.Length > 0)
+            {
+                var url = await  _storageService.UpdateOrganizationPhotoAsync(organization.Photo);
+                organizationToUpdate.Photo = url;
+            }
 
             organizationToUpdate.Name = organization.Name;
             organizationToUpdate.About = organization.About;
             organizationToUpdate.Address = organization.Address;
             organizationToUpdate.EMail = organization.EMail;
             organizationToUpdate.Phone = organization.Phone;
-
 
             _brmContext.Entry(organizationToUpdate).State = EntityState.Modified;
             //_brmContext.Organizacions.Update(organizationToUpdate);
