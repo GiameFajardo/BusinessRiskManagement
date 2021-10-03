@@ -1,4 +1,5 @@
-﻿using Core.Application.Contracts.Data;
+﻿using AutoMapper;
+using Core.Application.Contracts.Data;
 using Core.Application.Contracts.Services;
 using Core.Application.DTO;
 using Core.Domain.Model;
@@ -19,28 +20,25 @@ namespace Infrastructure.Services
 
         public readonly UserManager<ApplicationUser> _userManager;
         private readonly IStorageService _storageService;
+        private readonly IMapper _mapper;
 
         public OrganizationService(
             BRMContext brmContext, 
             UserManager<ApplicationUser> userManager,
-            IStorageService storageService)
+            IStorageService storageService,
+            IMapper mapper)
         {
             _brmContext = brmContext;
             _userManager = userManager;
 
             this._storageService = storageService;
+            this._mapper = mapper;
         }
         public List<CompanyDTO> GetAll()
         {
-           // return new List<OrganizacionDTO>();
-            var result =  _brmContext.Companies
-                .Select(o => new CompanyDTO 
-                { 
-                    Id = o.Id, 
-                    Enabled = o.Enabled, 
-                    Name = o.Name
-                }).ToList();
-            return result;
+            var companies = _brmContext.Companies.ToList();
+            var companiesToReturn = _mapper.Map<List<CompanyDTO>>(companies);
+            return companiesToReturn;
         }
 
         public async Task<Guid> Create(CompanyDTO org)
@@ -110,9 +108,9 @@ namespace Infrastructure.Services
 
             var organizationToUpdate = await _brmContext.Companies.FindAsync(organization.Id);
 
-            if (organization.Photo != null && organization.Photo.Length > 0)
+            if (organization.PhotoFile != null && organization.PhotoFile.Length > 0)
             {
-                var url = await  _storageService.UpdateOrganizationPhotoAsync(organization.Photo);
+                var url = await  _storageService.UpdateOrganizationPhotoAsync(organization.PhotoFile);
                 organizationToUpdate.Photo = url;
             }
 

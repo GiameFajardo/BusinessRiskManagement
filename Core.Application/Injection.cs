@@ -40,6 +40,7 @@ namespace Core.Application
                     RequireExpirationTime = false
                 };
             });
+            service.AddAutoMapper(typeof(Injection));
             return service;
         }
         //public static IServiceCollection RegisterApplicationServices(

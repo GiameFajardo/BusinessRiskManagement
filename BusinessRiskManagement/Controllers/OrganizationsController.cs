@@ -90,7 +90,7 @@ namespace BusinessRiskManagement.Controllers
                 CompanyEnvironmentDescription = request.CompanyEnvironmentDescription,
                 SecurityAndHealthObjeptives = request.SecurityAndHealthObjeptives,
                 Id = request.Id,
-                Photo = request.Photo
+                PhotoFile = request.Photo
             };
             bool updated = await _organizationService.Update(organization);
             return Created(organization.Id.ToString(), organization);

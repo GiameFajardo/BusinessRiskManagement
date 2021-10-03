@@ -75,3 +75,5 @@ C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskMa
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\Microsoft.WindowsAzure.Storage.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\BusinessRiskManagement\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
