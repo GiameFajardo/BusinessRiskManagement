@@ -11,6 +11,7 @@ using BusinessRiskManagement.Requests;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Core.Domain.Model;
 using BusinessRiskManagement.Responses;
+using AutoMapper;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,12 +23,14 @@ namespace BusinessRiskManagement.Controllers
     public class OrganizationsController : ControllerBase
     {
         private readonly IOrganizationService _organizationService;
+        private readonly IMapper _mapper;
 
-
-        public OrganizationsController(IOrganizationService organizationService
+        public OrganizationsController(IOrganizationService organizationService,
+            IMapper mapper
                                        )
         {
             _organizationService = organizationService;
+            this._mapper = mapper;
         }
 
         [HttpGet]
@@ -40,19 +43,9 @@ namespace BusinessRiskManagement.Controllers
         {
             var userId = HttpContext.User.Claims.SingleOrDefault(c => c.Type == "id").Value;
             CompanyDTO organization = await _organizationService.GetByUserAsync(userId);
-            var response = new OrganizationResponse
-            {
-                About = organization.About,
-                Address = organization.Address,
-                EMail = organization.EMail,
-                Id = organization.Id,
-                Name = organization.Name,
-                Phone = organization.Phone,
-                Photo = organization.PhotoURL,
-                CompanyEnvironmentDescription = organization.CompanyEnvironmentDescription,
-                SecurityAndHealthObjeptives = organization.SecurityAndHealthObjeptives
-            };
-            return Ok(response);
+            var comp = _mapper.Map<OrganizationResponse>(organization);
+
+            return Ok(comp);
         }
         [HttpPost("create")]
         public async Task<ActionResult> Create([FromBody] CreateOrganizationRequest request)
