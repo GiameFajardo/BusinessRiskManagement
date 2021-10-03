@@ -14,6 +14,8 @@ namespace BusinessRiskManagement.Requests
         public string About { get; set; }
         public string Address { get; set; }
         public string EMail { get; set; }
+        public string CompanyEnvironmentDescription { get; set; }
+        public string SecurityAndHealthObjeptives { get; set; }
         public string Phone { get; set; }
         [FileMaxLengthValidator(maxLength: 4)]
         [FileTypeValidator(fileTypeGroup:FileTypeGroup.Image)]

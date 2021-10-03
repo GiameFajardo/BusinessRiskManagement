@@ -14,5 +14,7 @@ namespace BusinessRiskManagement.Responses
         public string EMail { get; set; }
         public string Phone { get; set; }
         public string Photo { get; set; }
+        public string CompanyEnvironmentDescription { get; set; }
+        public string SecurityAndHealthObjeptives { get; set; }
     }
 }

@@ -34,7 +34,12 @@ namespace Infrastructure.Services
         {
            // return new List<OrganizacionDTO>();
             var result =  _brmContext.Companies
-                .Select(o => new CompanyDTO { Id = o.Id, Enabled = o.Enabled, Name = o.Name}).ToList();
+                .Select(o => new CompanyDTO 
+                { 
+                    Id = o.Id, 
+                    Enabled = o.Enabled, 
+                    Name = o.Name
+                }).ToList();
             return result;
         }
 
@@ -44,7 +49,14 @@ namespace Infrastructure.Services
             {
 
                 Enabled = true,
-                Name = org.Name
+                Name = org.Name,
+                About = org.About,
+                Phone = org.Phone,
+                SecurityAndHealthObjeptives = org.SecurityAndHealthObjeptives,
+                CompanyEnvironmentDescription = org.CompanyEnvironmentDescription,
+                Address = org.Address,
+                EMail = org.EMail,
+                Photo = org.PhotoURL
             };
 
             var result = await _brmContext.Organizacions.AddAsync(organization);
@@ -72,7 +84,7 @@ namespace Infrastructure.Services
         public async Task<CompanyDTO> GetByUserAsync(string userId)
         {
             var logedInUser = await _userManager.Users.
-                Include(u => u.Organizacion).
+                //Include(u => u.Organizacion).
                 SingleOrDefaultAsync(u => u.Id == userId);
             var organizationId = logedInUser.OrganizationId;
 
@@ -86,7 +98,9 @@ namespace Infrastructure.Services
                 Phone = company.Phone,
                 EMail = company.EMail,
                 Address = company.Address,
-                PhotoURL = company.Photo
+                PhotoURL = company.Photo,
+                CompanyEnvironmentDescription = company.CompanyEnvironmentDescription,
+                SecurityAndHealthObjeptives = company.SecurityAndHealthObjeptives
             };
             return organizationDTO;
         }
@@ -107,6 +121,8 @@ namespace Infrastructure.Services
             organizationToUpdate.Address = organization.Address;
             organizationToUpdate.EMail = organization.EMail;
             organizationToUpdate.Phone = organization.Phone;
+            organizationToUpdate.SecurityAndHealthObjeptives = organization.SecurityAndHealthObjeptives;
+            organizationToUpdate.CompanyEnvironmentDescription = organization.CompanyEnvironmentDescription;
 
             _brmContext.Entry(organizationToUpdate).State = EntityState.Modified;
             //_brmContext.Organizacions.Update(organizationToUpdate);

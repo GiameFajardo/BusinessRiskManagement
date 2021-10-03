@@ -16,6 +16,8 @@ namespace Core.Application.DTO
         public string Phone { get; set; }
         public IFormFile Photo { get; set; }
         public string PhotoURL { get; set; }
+        public string CompanyEnvironmentDescription { get; set; }
+        public string SecurityAndHealthObjeptives { get; set; }
     }
 }
 

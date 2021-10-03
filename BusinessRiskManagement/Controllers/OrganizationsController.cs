@@ -48,7 +48,9 @@ namespace BusinessRiskManagement.Controllers
                 Id = organization.Id,
                 Name = organization.Name,
                 Phone = organization.Phone,
-                Photo = organization.PhotoURL
+                Photo = organization.PhotoURL,
+                CompanyEnvironmentDescription = organization.CompanyEnvironmentDescription,
+                SecurityAndHealthObjeptives = organization.SecurityAndHealthObjeptives
             };
             return Ok(response);
         }
@@ -66,6 +68,9 @@ namespace BusinessRiskManagement.Controllers
                 Address = request.Address,
                 EMail = request.EMail,
                 Phone = request.Phone,
+                CompanyEnvironmentDescription = request.CompanyEnvironmentDescription,
+                SecurityAndHealthObjeptives = request.SecurityAndHealthObjeptives,
+                PhotoURL = request.Phone,
                 Id = request.Id
             };
             await _organizationService.CreateAndAsign(organization, request.UserId);
@@ -82,6 +87,8 @@ namespace BusinessRiskManagement.Controllers
                 Phone = request.Phone,
                 EMail = request.EMail,
                 Address = request.Address,
+                CompanyEnvironmentDescription = request.CompanyEnvironmentDescription,
+                SecurityAndHealthObjeptives = request.SecurityAndHealthObjeptives,
                 Id = request.Id,
                 Photo = request.Photo
             };
