@@ -15,9 +15,10 @@ namespace Core.Application.MappingProfiles
         {
             CreateMap<Company, CompanyDTO>()
                 .ForMember(dest => dest.PhotoURL,
-                    opt => opt.MapFrom(src => src.Photo));
-                //.ForMember(dest => dest.PhotoFile,
-                //    opt=> opt.Ignore());
+                    opt => opt.MapFrom(src => src.Photo))
+                .ReverseMap();
+            //.ForMember(dest => dest.PhotoFile,
+            //    opt=> opt.Ignore());
         }
     }
 }

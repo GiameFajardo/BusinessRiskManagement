@@ -63,12 +63,7 @@ namespace Infrastructure.Services
         }
         public async Task<Guid> CreateAndAsign(CompanyDTO org, Guid userId)
         {
-            var organization = new Company
-            {
-
-                Enabled = true,
-                Name = org.Name
-            };
+            var organization = _mapper.Map<Company>(org);
 
             var result = await _brmContext.Organizacions.AddAsync(organization);
 

@@ -12,8 +12,14 @@ namespace BusinessRiskManagement.MappingProfiles
     {
         public RequestToApplicationDTO()
         {
-            CreateMap<CreateOrganizationRequest, CompanyDTO>();
-            CreateMap<UpdateOrganizationRequest, CompanyDTO>();
+            CreateMap<CreateOrganizationRequest, CompanyDTO>()
+                .ForMember(dest=> dest.PhotoURL,
+                    opt=> opt.MapFrom(
+                        src => src.Photo));
+            CreateMap<UpdateOrganizationRequest, CompanyDTO>()
+                .ForMember(dest => dest.PhotoURL,
+                    opt => opt.MapFrom(
+                        src => src.Photo));
         }
     }
 }

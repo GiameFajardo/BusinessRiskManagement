@@ -52,21 +52,9 @@ namespace BusinessRiskManagement.Controllers
         {
             //var userId = HttpContext.User.Claims
             //    .SingleOrDefault(c => c.Type == "Id").Value;
-            var userId = HttpContext.User.Claims.SingleOrDefault(c => c.Type == "Id");
-            var organization = new CompanyDTO
-            {
-                Enabled = request.Enabled,
-                Name = request.Name,
-                About = request.About,
-                Address = request.Address,
-                EMail = request.EMail,
-                Phone = request.Phone,
-                CompanyEnvironmentDescription = request.CompanyEnvironmentDescription,
-                SecurityAndHealthObjeptives = request.SecurityAndHealthObjeptives,
-                PhotoURL = request.Phone,
-                Id = request.Id
-            };
-            await _organizationService.CreateAndAsign(organization, request.UserId);
+            var userId = HttpContext.User.Claims.SingleOrDefault(c => c.Type == "id").Value;
+            var organization = _mapper.Map<CompanyDTO>(request);
+            await _organizationService.CreateAndAsign(organization, new Guid(userId));
             return Ok();
         }
         [HttpPut("update")]
