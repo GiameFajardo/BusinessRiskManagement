@@ -43,19 +43,7 @@ namespace Infrastructure.Services
 
         public async Task<Guid> Create(CompanyDTO org)
         {
-            var organization = new Company
-            {
-
-                Enabled = true,
-                Name = org.Name,
-                About = org.About,
-                Phone = org.Phone,
-                SecurityAndHealthObjeptives = org.SecurityAndHealthObjeptives,
-                CompanyEnvironmentDescription = org.CompanyEnvironmentDescription,
-                Address = org.Address,
-                EMail = org.EMail,
-                Photo = org.PhotoURL
-            };
+            var organization = _mapper.Map<Company>(org);
 
             var result = await _brmContext.Organizacions.AddAsync(organization);
             await _brmContext.SaveChangesAsync();
@@ -82,19 +70,8 @@ namespace Infrastructure.Services
             var organizationId = logedInUser.OrganizationId;
 
             var company = await _brmContext.Companies.FindAsync(organizationId);
-            var organizationDTO = new CompanyDTO
-            {
-                Enabled = company.Enabled,
-                Name = company.Name,
-                Id = company.Id,
-                About = company.About,
-                Phone = company.Phone,
-                EMail = company.EMail,
-                Address = company.Address,
-                PhotoURL = company.Photo,
-                CompanyEnvironmentDescription = company.CompanyEnvironmentDescription,
-                SecurityAndHealthObjeptives = company.SecurityAndHealthObjeptives
-            };
+            var organizationDTO = _mapper.Map<CompanyDTO>(company);
+            
             return organizationDTO;
         }
 
