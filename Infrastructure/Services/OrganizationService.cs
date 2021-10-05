@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Core.Application.Contracts.Data;
 using Core.Application.Contracts.Services;
 using Core.Application.DTO;
 using Core.Domain.Model;

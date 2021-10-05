@@ -66,6 +66,7 @@ namespace Infrastructure
                 };
                 return new StorageConnectionFactory(storageOptions);
             });
+            service.AddScoped<IUserService, UserService>();
             service.AddScoped<IIdentityService, IdentityService>();
             service.AddScoped<IOrganizationService, OrganizationService>();
             service.AddScoped<IStorageService, StorageService>();

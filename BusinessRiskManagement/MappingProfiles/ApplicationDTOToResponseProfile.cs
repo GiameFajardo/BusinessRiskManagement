@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessRiskManagement.Responses;
 using Core.Application.DTO;
+using Core.Domain.Model;
 
 namespace BusinessRiskManagement.MappingProfiles
 {
@@ -13,6 +14,12 @@ namespace BusinessRiskManagement.MappingProfiles
                     opt => opt.MapFrom(src =>
                         src.PhotoURL
                     ));
+
+            CreateMap<UserDTO, UserResponse>()
+                .ReverseMap();
+
+            CreateMap<UserDTO, ApplicationUser>()
+                .ReverseMap();
         }
     }
 }

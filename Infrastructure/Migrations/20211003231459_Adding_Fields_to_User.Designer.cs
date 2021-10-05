@@ -4,14 +4,16 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(BRMContext))]
-    partial class BRMContextModelSnapshot : ModelSnapshot
+    [Migration("20211003231459_Adding_Fields_to_User")]
+    partial class Adding_Fields_to_User
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,9 +39,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Identification")
                         .HasColumnType("nvarchar(max)");
@@ -288,7 +287,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("10007289-fc34-47e9-a43f-731debc29fa3"),
+                            Id = new Guid("d35d3c7e-2520-42c9-8208-b7ebbbc5715a"),
                             Enabled = true,
                             Name = "Test Company"
                         });

@@ -17,6 +17,8 @@ namespace Core.Application.MappingProfiles
                 .ForMember(dest => dest.PhotoURL,
                     opt => opt.MapFrom(src => src.Photo))
                 .ReverseMap();
+            CreateMap<ApplicationUser, UserDTO>()
+                .ReverseMap();
             //.ForMember(dest => dest.PhotoFile,
             //    opt=> opt.Ignore());
         }

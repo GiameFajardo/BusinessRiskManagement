@@ -28,8 +28,12 @@ namespace Core.Application.DTO
         public virtual string NormalizedUserName { get; set; }
         
         public virtual string UserName { get; set; }
-      
-        
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string LastName { get; set; }
+        public string Identification { get; set; }
+
+
         //public virtual bool LockoutEnabled { get; set; }
         //public virtual int AccessFailedCount { get; set; }
     }
