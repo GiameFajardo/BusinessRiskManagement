@@ -19,6 +19,8 @@ namespace BusinessRiskManagement.MappingProfiles
                         src => src.Photo));
             // User Mappings
             CreateMap<CreateUserRequest, UserDTO>();
+            CreateMap<CreateDepartmentRequest, DepartmentDTO>()
+                .ReverseMap();
         }
     }
 }

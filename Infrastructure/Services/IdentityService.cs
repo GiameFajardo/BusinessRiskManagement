@@ -22,7 +22,7 @@ namespace Infrastructure.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly JwtSettings _jwtSettings;
         private readonly IOrganizationService _organizationService;
-
+        private  Guid OrganizationContextId;
         //public JwtSettings _JwtSettings { get; }
         public IdentityService(UserManager<ApplicationUser> userManager,
                                JwtSettings jwtSettings,
@@ -112,6 +112,7 @@ namespace Infrastructure.Services
                     User = user
                 };
             }
+            OrganizationContextId = existingUser.OrganizationId.Value;
             return GenerateAuthenticationResult(existingUser);
         }
         private AuthenticationResult GenerateAuthenticationResult(ApplicationUser user)
@@ -149,5 +150,9 @@ namespace Infrastructure.Services
             };
         }
 
+        public Guid GetOrganizationContext()
+        {
+            return OrganizationContextId;
+        }
     }
 }

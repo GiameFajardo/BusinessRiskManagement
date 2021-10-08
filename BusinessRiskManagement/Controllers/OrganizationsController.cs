@@ -41,7 +41,8 @@ namespace BusinessRiskManagement.Controllers
         [HttpGet("byUser")]
         public async Task<ActionResult<OrganizationResponse>> GetByUser()
         {
-            var userId = HttpContext.User.Claims.SingleOrDefault(c => c.Type == "id").Value;
+            var userId = HttpContext.User.Claims
+                .SingleOrDefault(c => c.Type == "id").Value;
             CompanyDTO organization = await _organizationService.GetByUserAsync(userId);
             var comp = _mapper.Map<OrganizationResponse>(organization);
 

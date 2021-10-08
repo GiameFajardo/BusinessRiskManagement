@@ -11,7 +11,7 @@ namespace Core.Application.Contracts.Services
     {
         DepartmentDTO CreateDepartment(DepartmentDTO department);
         Task<DepartmentDTO> CreateDepartmentAsync(DepartmentDTO department);
-        List<DepartmentDTO> GetAll();
+        List<DepartmentDTO> GetAll(Guid organizationId);
         Task<List<DepartmentDTO>> GetAllAsync();
     }
 }

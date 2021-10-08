@@ -20,6 +20,8 @@ namespace BusinessRiskManagement.MappingProfiles
 
             CreateMap<UserDTO, ApplicationUser>()
                 .ReverseMap();
+            CreateMap<DepartmentDTO, DepartmentResponse>()
+                .ReverseMap();
         }
     }
 }
