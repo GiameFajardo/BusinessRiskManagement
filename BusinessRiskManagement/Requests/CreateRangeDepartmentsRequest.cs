@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BusinessRiskManagement.Requests
 {
-    public class CreateDepartmentsRequest
+    public class CreateRangeDepartmentsRequest
     {
         public List<CreateDepartmentRequest> Departments { get; set; } = 
             new List<CreateDepartmentRequest>();

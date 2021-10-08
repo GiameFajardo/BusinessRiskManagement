@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessRiskManagement.Responses;
+using BusinessRiskManagement.Responses.Department;
 using Core.Application.DTO;
 using Core.Domain.Model;
 

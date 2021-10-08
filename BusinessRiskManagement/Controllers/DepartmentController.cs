@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BusinessRiskManagement.Requests;
-using BusinessRiskManagement.Responses;
+using BusinessRiskManagement.Responses.Department;
 using Core.Application.Contracts.Services;
 using Core.Application.DTO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -54,7 +54,7 @@ namespace BusinessRiskManagement.Controllers
             return departmentResponse;
         }
         [HttpPost("createrange")]
-        public async Task<ActionResult<bool>> CreateRange([FromBody] CreateDepartmentsRequest request)
+        public async Task<ActionResult<bool>> CreateRange([FromBody] CreateRangeDepartmentsRequest request)
         {
             var departmentsToCreate = new List<DepartmentDTO>();
             var orgId = HttpContext.User.Claims

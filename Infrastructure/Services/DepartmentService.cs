@@ -51,6 +51,7 @@ namespace Infrastructure.Services
 
         public bool CreateRangeDepartment(List<DepartmentDTO> departments)
         {
+
             departments.ForEach(d =>
             {
 
