@@ -9,7 +9,7 @@ namespace Core.Application.Contracts.Services
 {
     public interface IUserService
     {
-        List<UserDTO> GetAllUsers();
+        Task<List<UserDTO>> GetAllUsersAsync(Guid mainUserId);
         UserDTO CreateUser(UserDTO user);
         Task<UserCreationResult> CreateUserAsync(UserDTO user, Guid userCompanyId);
     }

@@ -12,7 +12,7 @@ namespace Core.Application.Contracts.Services
     {
 
         Task<AuthenticationResult> RegisterAsync(string email, string password);
-        Task<AuthenticationResult> RegisterAsync(string email, string name, string password);
+        Task<AuthenticationResult> RegisterAsync(string email, string name, string password, string companyName);
         Task<AuthenticationResult> LoginAsync(string email, string password);
     }
 }

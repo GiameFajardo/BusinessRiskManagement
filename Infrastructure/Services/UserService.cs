@@ -54,9 +54,18 @@ namespace Infrastructure.Services
 
  
 
-        public List<UserDTO> GetAllUsers()
+        public async Task<List<UserDTO>> GetAllUsersAsync(Guid mainUserId)
         {
-            var usersResult = _userManager.Users.ToList();
+            List<ApplicationUser> usersResult = new List<ApplicationUser>();
+            var userCompany = await _userManager
+                .FindByIdAsync(mainUserId.ToString());
+
+            if (userCompany.OrganizationId != null)
+            {
+                usersResult = _userManager.Users
+                    .Where(u=> u.OrganizationId == userCompany.OrganizationId)
+                    .ToList();
+            }
             var users = _mapper.Map<List<UserDTO>>(usersResult);
             return users;
         }

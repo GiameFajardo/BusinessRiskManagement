@@ -59,7 +59,7 @@ namespace Infrastructure.Services
 
             return GenerateAuthenticationResult(user);
         }
-        public async Task<AuthenticationResult> RegisterAsync(string email, string name, string password)
+        public async Task<AuthenticationResult> RegisterAsync(string email, string name, string password, string companyName)
         {
             var existingUser = await _userManager.FindByEmailAsync(email);
 
@@ -78,6 +78,8 @@ namespace Infrastructure.Services
             {
                 return new AuthenticationResult { Sussess = false, Errors = createdUser.Errors.Select(e => e.Description) };
             }
+
+            await _organizationService.CreateAndAsign(new CompanyDTO { Name = companyName }, new Guid(user.Id));
             return GenerateAuthenticationResult(user);
         }
 

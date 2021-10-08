@@ -43,8 +43,9 @@ namespace BusinessRiskManagement.Controllers
         [HttpGet("list")]
         public async Task<ActionResult<List<UserResponse>>> GetAll()
         {
+            var userCompany = HttpContext.User.Claims.SingleOrDefault(c => c.Type == "id").Value;
 
-            var userResult = _userService.GetAllUsers();
+            var userResult = await _userService.GetAllUsersAsync(new Guid(userCompany));
             var users = userResult.Select(u => _mapper.Map<UserResponse>(u)).ToList();
             return users;
         }

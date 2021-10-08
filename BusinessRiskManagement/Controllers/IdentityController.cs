@@ -36,7 +36,13 @@ namespace BusinessRiskManagement.Controllers
                     Errors = errors
                 });
             }
-            var authResult = await _identityService.RegisterAsync(request.Email, request.Name, request.Password);
+            var authResult = await _identityService
+                .RegisterAsync(
+                    request.Email, 
+                    request.Name, 
+                    request.Password, 
+                    request.CompanyName);
+
             if (!authResult.Sussess)
             {
                 return BadRequest(new AuthorizationFailedResponse
