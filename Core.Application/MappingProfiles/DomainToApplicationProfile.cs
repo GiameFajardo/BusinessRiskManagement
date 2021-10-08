@@ -21,6 +21,8 @@ namespace Core.Application.MappingProfiles
                 .ReverseMap();
             //.ForMember(dest => dest.PhotoFile,
             //    opt=> opt.Ignore());
+            CreateMap<Department, DepartmentDTO>()
+                .ReverseMap();
         }
     }
 }
