@@ -10,6 +10,7 @@ namespace Core.Application.Contracts.Services
     public interface IDepartmentService
     {
         DepartmentDTO CreateDepartment(DepartmentDTO department);
+        bool CreateRangeDepartment(List<DepartmentDTO> departments);
         Task<DepartmentDTO> CreateDepartmentAsync(DepartmentDTO department);
         List<DepartmentDTO> GetAll(Guid organizationId);
         Task<List<DepartmentDTO>> GetAllAsync();

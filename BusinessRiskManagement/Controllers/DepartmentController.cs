@@ -53,5 +53,22 @@ namespace BusinessRiskManagement.Controllers
             var departmentResponse = _mapper.Map<DepartmentResponse>(departmentCreated);
             return departmentResponse;
         }
+        [HttpPost("createrange")]
+        public async Task<ActionResult<bool>> CreateRange([FromBody] CreateDepartmentsRequest request)
+        {
+            var departmentsToCreate = new List<DepartmentDTO>();
+            var orgId = HttpContext.User.Claims
+                .SingleOrDefault(c => c.Type == "companyId").Value;
+            foreach (var depa in request.Departments)
+            {
+                var departmentToCreate = _mapper.Map<DepartmentDTO>(depa);
+                departmentToCreate.OrganizacionId = new Guid(orgId);
+                departmentsToCreate.Add(departmentToCreate);
+            }
+            var isCreated = _departmentService
+                .CreateRangeDepartment(departmentsToCreate);
+          
+            return isCreated;
+        }
     }
 }

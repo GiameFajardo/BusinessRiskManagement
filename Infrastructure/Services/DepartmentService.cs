@@ -49,6 +49,29 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
+        public bool CreateRangeDepartment(List<DepartmentDTO> departments)
+        {
+            departments.ForEach(d =>
+            {
+
+                if (d.OrganizacionId == Guid.Empty)
+                {
+                }
+                if (d.FatherDepartmentId == Guid.Empty)
+                {
+                    d.FatherDepartmentId = null;
+                }
+            });
+            var departmentsToCreate = _mapper.Map<List<Department>>(departments);
+            departmentsToCreate.ForEach(d =>
+            {
+                d.Id = Guid.NewGuid();
+            });
+            _brmContext.Departments.AddRange(departmentsToCreate);
+            var result = _brmContext.SaveChanges();
+            return result>0;
+        }
+
         public List<DepartmentDTO> GetAll(Guid organizationId)
         {
             var departments = _brmContext.Departments
