@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Application.DTO
+namespace Core.Application.DTO.Results
 {
-    public class UserCreationResult
+    public class UserUpdatedResult
     {
         public bool Sussess { get; set; }
         public IEnumerable<string> Errors { get; set; }

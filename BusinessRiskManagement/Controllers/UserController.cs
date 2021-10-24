@@ -39,7 +39,16 @@ namespace BusinessRiskManagement.Controllers
             var userResponse = _mapper.Map<UserResponse>(userCreated.User);
             return userResponse;
         }
+        [HttpPost("update")]
+        public async Task<ActionResult<UserResponse>> Update([FromBody] UpdateUserRequest request)
+        {
 
+            var userToUpdate = _mapper.Map<UserDTO>(request);
+
+            var userCreated = await _userService.UpdateUserAsync(userToUpdate);
+            var userResponse = _mapper.Map<UserResponse>(userCreated.User);
+            return userResponse;
+        }
         [HttpGet("list")]
         public async Task<ActionResult<List<UserResponse>>> GetAll()
         {

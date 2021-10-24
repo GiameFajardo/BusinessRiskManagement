@@ -14,5 +14,7 @@ namespace Core.Domain.Model
         public string Name { get; set; }
         public Guid? FatherDepartmentId { get; set; }
         public virtual Department FatherDepartment { get; set; }
+
+        public virtual IEnumerable<ApplicationUser> Users { get; set; }
     }
 }

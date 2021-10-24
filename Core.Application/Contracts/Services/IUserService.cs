@@ -1,4 +1,5 @@
 ﻿using Core.Application.DTO;
+using Core.Application.DTO.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace Core.Application.Contracts.Services
         Task<List<UserDTO>> GetAllUsersAsync(Guid mainUserId);
         UserDTO CreateUser(UserDTO user);
         Task<UserCreationResult> CreateUserAsync(UserDTO user, Guid userCompanyId);
+
+        Task<UserUpdatedResult> UpdateUserAsync(UserDTO user);
     }
 }

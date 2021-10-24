@@ -66,9 +66,16 @@ namespace Infrastructure.Services
             var departmentsToCreate = _mapper.Map<List<Department>>(departments);
             departmentsToCreate.ForEach(d =>
             {
-                d.Id = Guid.NewGuid();
+                if (d.Id == Guid.Empty)
+                {
+                    d.Id = Guid.NewGuid();
+                    _brmContext.Departments.Add(d);
+                }
+                
+                var depaToUpdate = _brmContext.Departments.Find(d.Id);
+                depaToUpdate.FatherDepartmentId = d.FatherDepartmentId;
+                depaToUpdate.Name = d.Name;
             });
-            _brmContext.Departments.AddRange(departmentsToCreate);
             var result = _brmContext.SaveChanges();
             return result>0;
         }

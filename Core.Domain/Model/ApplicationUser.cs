@@ -14,6 +14,8 @@ namespace Core.Domain.Model
         public string SecondName { get; set; }
         public string LastName { get; set; }
         public string Identification { get; set; }
+        public Guid? DepartmentId { get; set; }
+        public Department Department { get; set; }
         public Guid? OrganizationId { get; set; }
         public virtual Organizacion Organizacion { get; set; }
     }

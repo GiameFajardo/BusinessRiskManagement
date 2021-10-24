@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessRiskManagement.Requests;
 using BusinessRiskManagement.Responses;
 using BusinessRiskManagement.Responses.Department;
 using Core.Application.DTO;
@@ -19,6 +20,8 @@ namespace BusinessRiskManagement.MappingProfiles
             CreateMap<UserDTO, UserResponse>()
                 .ReverseMap();
 
+            CreateMap<UserDTO, UpdateUserRequest>()
+                .ReverseMap();
             CreateMap<UserDTO, ApplicationUser>()
                 .ReverseMap();
             CreateMap<DepartmentDTO, DepartmentResponse>()

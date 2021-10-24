@@ -32,7 +32,8 @@ namespace Core.Application.DTO
         public string SecondName { get; set; }
         public string LastName { get; set; }
         public string Identification { get; set; }
-
+        public Guid DepartmentId { get; set; }
+        public DepartmentDTO Department { get; set; }
 
         //public virtual bool LockoutEnabled { get; set; }
         //public virtual int AccessFailedCount { get; set; }

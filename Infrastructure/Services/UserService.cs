@@ -7,18 +7,20 @@ using AutoMapper;
 using Core.Application.Contracts.Data;
 using Core.Application.Contracts.Services;
 using Core.Application.DTO;
+using Core.Application.DTO.Results;
 using Core.Domain.Model;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 
 namespace Infrastructure.Services
 {
     public class UserService : IUserService
     {
-        private readonly IBRMContext _brmContext;
+        private readonly BRMContext _brmContext;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMapper _mapper;
 
-        public UserService(IBRMContext brmContext,
+        public UserService(BRMContext brmContext,
             UserManager<ApplicationUser> userManager,
             IMapper mapper)
         {
@@ -70,5 +72,26 @@ namespace Infrastructure.Services
             return users;
         }
 
+        public async Task<UserUpdatedResult> UpdateUserAsync(UserDTO user)
+        {
+
+            var userToUpdate = await _userManager.FindByIdAsync(user.Id.ToString());
+            userToUpdate.Identification = user.Identification;
+            userToUpdate.LastName = user.LastName;
+            userToUpdate.SecondName = user.SecondName;
+            userToUpdate.UserName = user.UserName;
+            userToUpdate.DepartmentId = user.DepartmentId;
+            userToUpdate.Email = user.Email;
+            userToUpdate.FirstName = user.FirstName;
+            
+
+            //var userToUpdate = _mapper.Map<ApplicationUser>(user);
+            var result = await _userManager.UpdateAsync(userToUpdate);
+            //userToUpdate.DepartmentId = user.DepartmentId;
+            //_brmContext.Update(userToUpdate);
+            //var result = _brmContext.SaveChanges();
+
+            return new UserUpdatedResult { Sussess = result.Succeeded };
+        }
     }
 }
