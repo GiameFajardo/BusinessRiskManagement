@@ -23,6 +23,11 @@ namespace Core.Application.MappingProfiles
             //    opt=> opt.Ignore());
             CreateMap<Department, DepartmentDTO>()
                 .ReverseMap();
+            CreateMap<WorkingArea,WorkinAreaDTO> ()
+                .ForMember(dest=> dest.Users,
+                    opt => opt.MapFrom(src=>src.WorkingAreaAssignations.Select(x=>x.ApplicationUser))
+                )
+                .ReverseMap();
         }
     }
 }

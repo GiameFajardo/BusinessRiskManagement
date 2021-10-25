@@ -18,5 +18,7 @@ namespace Core.Domain.Model
         public Department Department { get; set; }
         public Guid? OrganizationId { get; set; }
         public virtual Organizacion Organizacion { get; set; }
+
+        public virtual ICollection<WorkingAreaAssignation> WorkingAreaAssignations { get; set; }
     }
 }

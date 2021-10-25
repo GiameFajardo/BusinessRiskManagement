@@ -2,6 +2,7 @@
 using BusinessRiskManagement.Requests;
 using BusinessRiskManagement.Responses;
 using BusinessRiskManagement.Responses.Department;
+using BusinessRiskManagement.Responses.WorkingArea;
 using Core.Application.DTO;
 using Core.Domain.Model;
 
@@ -25,6 +26,12 @@ namespace BusinessRiskManagement.MappingProfiles
             CreateMap<UserDTO, ApplicationUser>()
                 .ReverseMap();
             CreateMap<DepartmentDTO, DepartmentResponse>()
+                .ReverseMap();
+
+            CreateMap<WorkinAreaDTO, WorkingAreaResponse>()
+                //.ForMember(dest => dest.Users,
+                //    opt => opt.MapFrom(src => src.Users.Select(x => x.ApplicationUser))
+                //)
                 .ReverseMap();
         }
     }

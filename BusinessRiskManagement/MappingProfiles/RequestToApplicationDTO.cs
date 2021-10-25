@@ -22,6 +22,11 @@ namespace BusinessRiskManagement.MappingProfiles
                 .ReverseMap();
             CreateMap<CreateDepartmentRequest, DepartmentDTO>()
                 .ReverseMap();
+            CreateMap<WorkinAreaDTO, CreateWorkingAreaRequest>()
+                //.ForMember(dest => dest.Users,
+                //    opt => opt.MapFrom(src => src.Users.Select(x => x.ApplicationUser))
+                //)
+                .ReverseMap();
         }
     }
 }

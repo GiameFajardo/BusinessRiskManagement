@@ -83,15 +83,14 @@ namespace Infrastructure.Services
             userToUpdate.DepartmentId = user.DepartmentId;
             userToUpdate.Email = user.Email;
             userToUpdate.FirstName = user.FirstName;
-            
 
             //var userToUpdate = _mapper.Map<ApplicationUser>(user);
             var result = await _userManager.UpdateAsync(userToUpdate);
             //userToUpdate.DepartmentId = user.DepartmentId;
             //_brmContext.Update(userToUpdate);
             //var result = _brmContext.SaveChanges();
-
-            return new UserUpdatedResult { Sussess = result.Succeeded };
+            var userToRetuen = _mapper.Map<UserDTO>(userToUpdate);
+            return new UserUpdatedResult { Sussess = result.Succeeded , User = userToRetuen };
         }
     }
 }
