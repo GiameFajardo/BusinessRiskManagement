@@ -37,6 +37,9 @@ namespace Infrastructure.Data
         public DbSet<ApplicationUser> Users { get; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<WorkingArea> WorkingArea { get; set; }
+        public DbSet<Form> Forms { get; set; }
+        public DbSet<Entry> Entries { get; set; }
+        public DbSet<EntryMeta> EntryMetas { get; set; }
 
         public DbSet<WorkingAreaAssignation> WorkingAreaAssignation { get; set; }
     }
