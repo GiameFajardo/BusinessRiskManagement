@@ -1,7 +1,9 @@
-﻿using Core.Application.Data.Services;
-using Core.Application.Services;
+﻿using Core.Application.Contracts.Services;
+using Core.Application.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +18,40 @@ namespace Core.Application
             this IServiceCollection service,
             IConfiguration configuration)
         {
-            service.AddScoped< IOrganizationService, OrganizationService >();
+            var jwtSettings = new JwtSettings();
+            configuration.Bind(nameof(jwtSettings), jwtSettings);
+            service.AddSingleton(jwtSettings);
+
+            service.AddAuthentication(c =>
+            {
+                c.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                c.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                c.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(c =>
+            {
+                c.SaveToken = true;
+                c.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateLifetime = true,
+                    RequireExpirationTime = false
+                };
+            });
+            service.AddAutoMapper(typeof(Injection));
             return service;
         }
+        //public static IServiceCollection RegisterApplicationServices(
+        //    this IServiceCollection service,
+        //    IConfiguration configuration, JwtSettings jwtSettings)
+        //{
+        //    service.AddScoped<IOrganizationService, OrganizationService>();
+        //    service.AddScoped<IIdentityService, IdentityService>();
+        //    configuration.Bind(nameof(jwtSettings), jwtSettings);
+        //    service.AddSingleton(jwtSettings);
+        //    return service;
+        //}
     }
 }

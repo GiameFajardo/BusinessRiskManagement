@@ -1,2 +1,0 @@
-C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Domain\obj\Debug\Domain.csproj.AssemblyReference.cache
-C:\Users\gfajardo.CECOMSACORP\source\repos\BusinessRiskManagement\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
