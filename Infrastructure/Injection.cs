@@ -45,7 +45,7 @@ namespace Infrastructure
             else if (env.IsDevelopment())
             {
                 service.AddDbContext<Infrastructure.Data.BRMContext>(option =>
-                    option.UseSqlServer(configuration.GetConnectionString("ProductionConnection"),
+                    option.UseSqlServer(configuration.GetConnectionString("LocalConnection"),
                 assembly => assembly.MigrationsAssembly(typeof(BRMContext).Assembly.FullName)));
             }
             else
